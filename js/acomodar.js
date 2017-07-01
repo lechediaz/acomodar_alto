@@ -5,6 +5,8 @@ $(document).ready(function()
     var hijoA = contenedor.find('.a');
     var hijoB = contenedor.find('.b');
 
+    AcomodarAltos();
+
     $(window).resize(function(event)
     {
         if (!redimensionando)
@@ -12,16 +14,9 @@ $(document).ready(function()
             redimensionando = true;
             setTimeout(function()
             {
-                if (hijoA.height() > hijoB.height())
-                {
-                    hijoB.css('height', hijoA.height() + 'px');
-                }
-                else
-                {
-                    hijoA.css('height', hijoB.height() + 'px');
-                }
+                AcomodarAltos();
                 redimensionando = false;
-            }, 900);
+            }, 200);
         }
         else
         {
@@ -31,4 +26,16 @@ $(document).ready(function()
         
         console.log("TAMAÑO DE VENTA CAMBIO");
     });
+
+    function AcomodarAltos()
+    {
+        if (hijoA.height() > hijoB.height())
+        {
+            hijoB.css('height', hijoA.height() + 'px');
+        }
+        else
+        {
+            hijoA.css('height', hijoB.height() + 'px');
+        }
+    }
 });
